@@ -1,0 +1,40 @@
+server:
+  port: 7000
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:9411/  #zipkin server的请求地址
+    discoveryClientEnabled: false #让nacos把它当成一个URL，而不要当做服务名
+  sleuth:
+    sampler:
+      probability: 1.0  #采样的百分比
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # 将gateway注册到nacos
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 让gateway从nacos中获取服务信息
+      routes:
+        - id: stock_route     #当前路由的标识，要求唯一
+          uri: lb://service-stock #改造 自带负载均衡
+#          uri: http://localhost:8081   #请求最终要被转发的地址
+          order: 1    #路由的优先级，数字越小，优先级越高
+          predicates: #断言（添加判断）返回值bool，转发请求要满足的条件
+            - Path=/stock-serv/**
+#            - Price=100,200 # 限制价格在100到200之间的才能访问
+#            - Before=2020-03-05T00:00:00.000+08:00 #限制请求时间在2020-05-05之前
+#            - Method=POST #限制请求方式为POST
+          filters:    #过滤器，在请求传递的过程中，对请求做手脚
+            - StripPrefix=1   #请求转发之前，去掉一层路径
+#            - Log=false,true  # 控制日志是否开启
+#            - SetStatus=250
+        - id: business_route
+          uri: lb://service-business
+          order: 1
+          predicates:
+            - Path=/business-serv/**
+          filters:
+              - StripPrefix=1

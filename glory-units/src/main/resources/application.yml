@@ -1,0 +1,22 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: service-units
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/alibaba?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+rocketmq:
+  name-server: 127.0.0.1:9876   #rocketMQ服务的地址
