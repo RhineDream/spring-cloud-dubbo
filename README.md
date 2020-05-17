@@ -5,7 +5,6 @@
 
 ​		微服务采用一组服务的方式来构建一个应用，服务独立部署在不同的进程中，不同服务通过一些轻量级交互机制来通信，例如 RPC、HTTP 等，服务可独立扩展伸缩，每个服务定义了明确的边界，不同的服务甚至可以采用不同的编程语言来实现，由独立的团队来维护。
 
-![img](https://img-blog.csdnimg.cn/20200324175558578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0xTWV9DU0ROXw==,size_16,color_FFFFFF,t_70)
 
 ## 微服务基本概念
 
