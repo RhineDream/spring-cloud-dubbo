@@ -122,7 +122,7 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
 
 * maven：3.3.9
 
-* 数据库：MySQL 5.7
+* 数据库：MySQL
 
 * 持久层: SpingData Jpa
 
@@ -139,9 +139,5 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
   * 链路追踪 : Sleuth+zipkin
 
   * 消息队列 : RocketMQ
-
-  * 短信服务 : 阿里云sms
-
-  * 配置中心 : nacos config
 
   * 分布式事务：Seate
